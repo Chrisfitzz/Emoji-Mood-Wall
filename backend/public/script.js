@@ -3,28 +3,7 @@
 // URL of backend API -- FE calls this
 const API_URL = "/api/moods";
 
-/* -------- vote-per-day helpers (client UX + voter id) -------- */
 
-function todayKey() {
-    return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-}
-
-function hasVotedToday() {
-    return localStorage.getItem("lastVoteDate") === todayKey();
-}
-
-function markVotedToday() {
-    localStorage.setItem("lastVoteDate", todayKey());
-}
-
-function getVoterId() {
-    let id = localStorage.getItem("voterId");
-    if (!id) {
-        id = crypto.randomUUID();
-        localStorage.setItem("voterId", id);
-    }
-    return id;
-}
 
 /* -------- API calls -------- */
 
@@ -83,11 +62,6 @@ function renderMoods(moods) {
 // Send a vote for a specific emoji to the backend + refresh UI
 async function vote(emoji) {
     try {
-        // UX layer (client-side)
-        if (hasVotedToday()) {
-            alert("You already voted today - come back tomorrow!");
-            return;
-        }
 
         const voterId = getVoterId();
 
@@ -99,12 +73,7 @@ async function vote(emoji) {
             body: JSON.stringify({ emoji, voterId }),
         });
 
-        // Server enforcement layer (real protection)
-        if (res.status === 429) {
-            alert("You already voted today - come back tomorrow!");
-            markVotedToday(); // sync local UX with server result
-            return;
-        }
+
 
         if (!res.ok) {
             const err = await res.json().catch(() => ({}));
@@ -166,11 +135,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    // Optional: show a gentle message, but DO NOT block the UI
-    // (blocking happens inside vote())
-    if (hasVotedToday()) {
-        console.log("User already voted today (client-side check).");
-    }
+
 });
 
 // Optional: polling for “real-time-ish” updates
