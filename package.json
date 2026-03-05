@@ -1,0 +1,8 @@
+{
+  "name": "emoji-mood-wall-root",
+  "private": true,
+  "scripts": {
+    "build": "cd backend && npm ci && npm run build",
+    "start": "cd backend && npm start"
+  }
+}
