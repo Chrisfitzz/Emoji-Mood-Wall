@@ -1,6 +1,12 @@
 # Emoji Mood Wall
 
-![Emoji Mood Wall Preview](Preview.png)
+<img src="Preview.png" width="400">
+
+## Live Demo
+
+https://emoji-mood-wall-production.up.railway.app
+
+---
 
 A small full-stack project where people can vote on how they’re feeling using emoji and see the results update in real time.
 
