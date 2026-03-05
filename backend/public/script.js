@@ -3,11 +3,8 @@
 // URL of backend API -- FE calls this
 const API_URL = "/api/moods";
 
-
-
 /* -------- API calls -------- */
 
-// Function that calls the Backend and returns the moods as a JS object
 async function fetchMoods() {
     const response = await fetch(API_URL);
 
@@ -62,18 +59,11 @@ function renderMoods(moods) {
 // Send a vote for a specific emoji to the backend + refresh UI
 async function vote(emoji) {
     try {
-
-        const voterId = getVoterId();
-
         const res = await fetch(API_URL, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ emoji, voterId }),
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ emoji }),
         });
-
-
 
         if (!res.ok) {
             const err = await res.json().catch(() => ({}));
@@ -81,15 +71,13 @@ async function vote(emoji) {
             return;
         }
 
-        // Mark after successful vote
-        markVotedToday();
-
         const moods = await fetchMoods();
         renderMoods(moods);
     } catch (err) {
         console.error("Error voting:", err);
     }
 }
+
 function setupAddMoodForm() {
     const form = document.getElementById("addMoodForm");
     const input = document.getElementById("newEmoji");
@@ -126,7 +114,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderMoods(moods);
     setupAddMoodForm();
 
-    // Attach click handlers to emoji buttons
     const buttons = document.querySelectorAll("[data-emoji]");
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -134,8 +121,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             vote(emoji);
         });
     });
-
-
 });
 
 // Optional: polling for “real-time-ish” updates
