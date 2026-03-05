@@ -114,26 +114,26 @@ http://localhost:5001
 
 ## Why I made this
 
-I wanted to better understand how a simple full-stack app actually fits together, including:
+-  I wanted to better understand how a simple full-stack app actually fits together, including:
 
-Building an API with Express
+-  Building an API with Express
 
-Connecting a database
+-  Connecting a database
 
-Handling frontend → backend requests
+-  Handling frontend → backend requests
 
-Storing and updating data
+-  Storing and updating data
 
-Preventing spam votes
+-  Preventing spam votes
 
-Possible future improvements
+ ## Possible future improvements
 
-Input validation with Zod
+-  Input validation with Zod
 
-Security headers with Helmet
+-  Security headers with Helmet
 
-Automated API tests
+-  Automated API tests
 
-WebSocket updates instead of polling
+-  WebSocket updates instead of polling
 
-Better mobile layout
+-  Better mobile layout
