@@ -90,7 +90,9 @@ Body:
 {
   "emoji": "😴"
 }
-Run locally
+```
+
+## Run locally
 
 Clone the repo and install dependencies:
 
