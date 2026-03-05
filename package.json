@@ -2,7 +2,7 @@
   "name": "emoji-mood-wall-root",
   "private": true,
   "scripts": {
-    "build": "cd backend && npm ci && npm run build",
+    "build": "cd backend && npm install --omit=dev && npm run build",
     "start": "cd backend && npm start"
   }
 }
