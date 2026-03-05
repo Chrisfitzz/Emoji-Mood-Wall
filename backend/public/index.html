@@ -1,0 +1,53 @@
+<!DOCTYPE html> <!-- Telling the browser it's a HTML document  -->
+<html lang="en"> <!-- Telling browser that content is English -->
+<head> <!-- Everything inside head is metadata or configuration for the page -->
+    <meta charset="UTF-8" /> <!-- This document uses UTF-8 encoding -->
+    <!-- Tells the browser to use the device width as viewport width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EMOJI MOOD WALL</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+    <header class="app-header">
+        <h1><span>Emoji Mood Wall</span></h1>
+        <p>Click an emoji to vote for your mood</p>
+    </header>
+
+    <div class="emoji-buttons">
+        <button data-emoji="(＾▽＾)">(＾▽＾)</button>
+        <button data-emoji="(・・?)">(・・?)</button>
+        <button data-emoji="(╥﹏╥)">(╥﹏╥)</button>
+        <button data-emoji="(◉‿◉)">(◉‿◉)</button>
+        <button data-emoji="(✖﹏✖)">(✖﹏✖)</button>
+        <button data-emoji="(☉_☉)">(☉_☉)</button>
+        <button data-emoji="(^～^)">(^～^)</button>
+        <button data-emoji="( ゜o゜)">( ゜o゜)</button>
+        <button data-emoji="(＃`Д´)">(＃`Д´)</button>
+    </div>
+    <section>
+    <form id="addMoodForm" class="add-mood">
+        <input id="newEmoji" placeholder="Type emoji e.g. : )" maxlength="8" />
+        <button type="submit">Add</button>
+    </form>
+        </section>
+
+    <div id="addMoodMsg"></div>
+
+    <section class="chart-section"> <!-- Creating a container for bars section -->
+        <h2>Live Mood Chart</h2>
+        <div id="mood-bars"></div>
+    </section>
+
+    <p class="hint">
+        The bars above are tracking the Emoji votes
+    </p>
+</div>
+<script src="script.js"></script>
+<!-- Because the script tag is at the end of <body>, the browser:
+-   Loads all HTML.
+-   Builds the DOM tree.
+-   THEN loads your JS script — with the DOM already ready for manipulation.
+This avoids the “DOM not found” errors you would get if JS ran too early. -->
+</body>
+</html>
