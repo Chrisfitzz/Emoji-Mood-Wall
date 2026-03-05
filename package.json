@@ -1,9 +1,8 @@
 {
-  "name": "emoji-mood-wall-root",
+  "name": "emoji-mood-wall",
   "private": true,
-
   "scripts": {
-    "dev": "cd backend && npm run dev",
-    "start": "cd backend && npm start"
+    "start": "node backend/server.js",
+    "build": "echo \"no build step\""
   }
 }
